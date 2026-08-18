@@ -31,3 +31,57 @@ function reverseArrayInPlace(arr) {
   }
 }
 
+let list = {
+  value: 1,
+  rest: {
+    value: 2,
+    rest: {
+      value: 3,
+      rest: null
+    }
+  }
+}
+
+let arr = [1,2,3,4]
+
+function arrayToList(arr) {
+  let list = null
+  for (let elem of reverseArray(arr)) {
+    list = {value: elem, rest: list}
+  }
+  return list
+}
+
+
+function listToArray(list) {
+  let arr = []
+  for (let node = list; node; node = node.rest)
+  arr.push(node.value)
+  return arr
+}
+
+
+function prepend(list, element) {
+  let arr = listToArray(list)
+  arr.unshift(element)
+  return arrayToList(arr)
+}
+
+function nth(list, index) {
+  let count = 0
+  let node = list
+  while (node) {
+    if (count == index) return node.value
+    count += 1
+    node = node.rest
+  }
+}
+
+function recursiveNth(list, index) {
+  node = list
+  if (index == 0) return node.value
+
+  recursiveNth(node.rest, index - 1)
+}
+
+// recursiveNth(list, 3)
