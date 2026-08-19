@@ -31,19 +31,6 @@ function reverseArrayInPlace(arr) {
   }
 }
 
-let list = {
-  value: 1,
-  rest: {
-    value: 2,
-    rest: {
-      value: 3,
-      rest: null
-    }
-  }
-}
-
-let arr = [1,2,3,4]
-
 function arrayToList(arr) {
   let list = null
   for (let elem of reverseArray(arr)) {
@@ -81,7 +68,12 @@ function recursiveNth(list, index) {
   node = list
   if (index == 0) return node.value
 
-  recursiveNth(node.rest, index - 1)
+  return recursiveNth(node.rest, index - 1)
 }
 
-// recursiveNth(list, 3)
+// Unfinished
+function deepEqual(obj1, obj2) {
+  let keys1 = Object.keys(obj1)
+  let keys2 = Object.keys(obj2)
+  if (keys1.length != keys2.length) return false
+}
